@@ -1,0 +1,230 @@
+<!doctype html><html lang="zh-Hant"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>唱 K-POP 學韓語 ② · Super Junior</title>
+<meta name="theme-color" content="#0d0d12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="韓語②SJ">
+<style>
+:root{
+  --bg:#0d0d12; --card:#1a1a24; --line:#2b2b3a; --txt:#f3f3f8; --dim:#a6a6bb;
+  --acc:#3b82f6; --acc2:#93c5fd; --lav:#b9a8ff; --mint:#7df0c8;
+}
+body.superjunior{ --acc:#2f6bff; --acc2:#9ec5ff; }       /* Sapphire Blue 應援色 */
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,"Noto Sans TC","Segoe UI",system-ui,sans-serif;font-size:15px;line-height:1.6}
+header{position:sticky;top:0;z-index:5;background:linear-gradient(180deg,var(--bg),rgba(13,13,18,.86));backdrop-filter:blur(8px);padding:12px 14px 8px;border-bottom:1px solid var(--line)}
+h1{margin:0;font-size:20px;letter-spacing:.5px}
+h1 b{color:var(--acc)}
+.sub{color:var(--dim);font-size:13px;margin-top:2px}
+.tabs{display:flex;gap:6px;margin-top:10px;overflow-x:auto;padding-bottom:2px}
+.tab{flex:0 0 auto;background:var(--card);border:1px solid var(--line);color:var(--dim);padding:9px 13px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer}
+.tab.on{background:var(--acc);color:#10101a;border-color:var(--acc)}
+.wrap{max-width:680px;margin:0 auto;padding:12px 14px 90px}
+.bar{height:8px;background:var(--line);border-radius:999px;overflow:hidden;margin:4px 0 2px}
+.bar>i{display:block;height:100%;background:var(--acc);width:0;transition:width .3s}
+.rate{display:flex;align-items:center;gap:8px;color:var(--dim);font-size:13px;margin:10px 0}
+.rate input{flex:1}
+.note{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--lav);border-radius:12px;padding:14px;margin:12px 0;font-size:14.5px}
+.era{color:var(--acc2);font-size:13px;font-weight:700;margin:16px 0 6px;letter-spacing:.5px;text-transform:uppercase}
+.song{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:9px 0;overflow:hidden}
+.shead{display:flex;align-items:center;gap:10px;padding:13px 14px;cursor:pointer}
+.shead .ko{font-size:18px;font-weight:800}
+.shead .en{color:var(--dim);font-size:13px}
+.shead .done{margin-left:auto;font-size:20px;opacity:.25}
+.song.learned .shead .done{opacity:1}
+.song.learned{border-color:var(--acc)}
+.body{display:none;padding:0 14px 14px;border-top:1px solid var(--line)}
+.song.open .body{display:block}
+.sec{margin:13px 0}
+.lab{font-size:13px;color:var(--acc2);font-weight:700;margin-bottom:5px}
+.story{font-size:14.5px;color:var(--txt)}
+.tip{font-size:14px;color:var(--dim);background:rgba(255,255,255,.03);border-radius:10px;padding:10px}
+.voc{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.spk{flex:0 0 auto;background:var(--line);border:none;color:var(--txt);width:38px;height:38px;border-radius:10px;font-size:17px;cursor:pointer}
+.k1{font-size:19px;font-weight:700}
+.k2{font-size:14px;color:var(--dim)}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0}
+.lk{flex:1 1 auto;text-align:center;background:var(--line);color:var(--txt);text-decoration:none;padding:11px 10px;border-radius:10px;font-size:14px;font-weight:600}
+.lk.tr{background:var(--acc);color:#10101a}
+.btn{display:inline-block;background:var(--acc);color:#10101a;border:none;border-radius:10px;padding:11px 16px;font-size:14.5px;font-weight:700;cursor:pointer;margin:4px 6px 0 0}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--txt)}
+.quiz{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:10px}
+.qq{font-size:16px;margin-bottom:10px}
+.qq b{font-size:22px;color:var(--acc2)}
+.opt{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);color:var(--txt);padding:13px;border-radius:10px;margin:7px 0;font-size:18px;cursor:pointer}
+.opt.ok{background:#1c4a2e;border-color:#2ecc71}
+.opt.no{background:#4a1c25;border-color:#ff5470}
+.qres{font-size:15px;margin-top:8px;font-weight:700}
+.foot{text-align:center;color:var(--dim);font-size:12px;margin-top:18px}
+</style></head><body>
+<header>
+  <h1>🎤 唱 <b>K-POP</b> 學韓語 ②</h1>
+  <div class="sub">元祖團 · Super Junior 寶藍應援棒一起唱 🔵 · 點 🔊 聽韓語發音</div>
+  <div class="tabs" id="tabs"></div>
+</header>
+<div class="wrap" id="wrap"></div>
+
+<script>
+/* ===== 語速 ===== */
+let RATE=parseFloat(localStorage.getItem("koRate2")||"0.85");
+function speak(t,lang){try{const u=new SpeechSynthesisUtterance(t);u.lang=lang||"ko-KR";u.rate=RATE;speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}}
+const enc=s=>encodeURIComponent(s);
+
+/* ===== 한글 跟唱攻略(常用字非歌詞) ===== */
+const KCHEAT=[
+["안녕","annyeong","嗨/你好"],["사랑해","saranghae","我愛你"],["보고싶어","bogosipeo","好想你"],
+["너","neo","你"],["나","na","我"],["가자","gaja","走吧/一起來"],["좋아","joa","喜歡/好"],
+["최고","choego","最棒"],["괜찮아","gwaenchana","沒關係"],["고마워","gomawo","謝謝"],
+["예뻐","yeppeo","漂亮"],["신나","sinna","超嗨/興奮"]];
+function koCard(){return `<div class="note">
+🇰🇷 <b>한글 跟唱 &amp; 咬字攻略</b><br><br>
+1️⃣ <b>真要咬字準,先學 한글</b>:只有 40 音、規則超清楚,1～2 小時就能自己讀,發音最準。你的「語言學習 AI」有韓文字母練習可以搭。<br><br>
+2️⃣ <b>台灣人最容易念錯</b>:<br>
+　• <b>ㄹ</b>:介於 L／R,唱快歌時輕輕彈過<br>
+　• <b>ㅓ(eo)≠ㅗ(o)</b>:ㅓ 放鬆像「ㄜ」,ㅗ 嘟嘴像「ㄛ」<br>
+　• <b>緊音 ㄲㄸㅃㅆㅉ</b>:用力、短促、不送氣<br>
+　• <b>收尾音(받침)</b>:字尾子音要收住別吞掉<br><br>
+3️⃣ <b>練整首</b>:每首點「🇰🇷 拼音歌詞」看羅馬拼音跟著念,再點「🎤 跟唱影片」用 YouTube 調 <b>0.75 倍速</b>一句一句跟。<br><br>
+🔊 <b>先念念這些常用字</b>(點 🔊 聽、跟著咬清楚):
+<div style="margin-top:8px">${KCHEAT.map(k=>`<div class="voc"><button class="spk" onclick="speak('${k[0]}')">🔊</button><div><span class="k1">${k[0]}</span> <span class="k2">${k[1]} · ${k[2]}</span></div></div>`).join("")}</div>
+</div>`;}
+
+/* ===== 資料:每首 voc 為依主題挑的常用韓文詞,非歌詞;整首歌詞一律外連 ===== */
+const ARTISTS={
+superjunior:{name:"SUPER JUNIOR",emoji:"🔵",cls:"superjunior",songs:[
+ {ko:"U","en":"U",era:"經典 · 2006",story:"Super Junior 真正打開知名度的早期代表作,旋律明亮好記。",chorus:"副歌「U」拉長音好跟,先抓主句。",tip:"U 圓唇拉長,像「ㄨˊ」。",voc:[["너","neo","你"],["사랑","sarang","愛"],["마음","maeum","心"],["함께","hamkke","一起"],["좋아","joa","喜歡"],["빛나","binna","發光"],["우리","uri","我們"]]},
+ {ko:"쏘리쏘리","en":"Sorry Sorry",era:"經典 · 2009",story:"奠定『神級舞曲』地位的傳奇之作,前奏一下全亞洲都會接。",chorus:"「쏘리쏘리쏘리쏘리」四連發最好跟,先把這句喊穩。",tip:"쏘 sso 緊音用力,別念成輕聲的 so。",voc:[["미안해","mianhae","對不起"],["사랑","sarang","愛"],["너","neo","你"],["빠져","ppajyeo","陷入/著迷"],["마음","maeum","心"],["자꾸","jakku","一直"],["좋아","joa","喜歡"]]},
+ {ko:"미인아","en":"Bonamana",era:"經典 · 2010",story:"Sorry Sorry 之後的又一神曲(韓文歌名『미인아=美人啊』),貝斯前奏超洗腦。",chorus:"「미인아」呼喊句好記。",tip:"미인 mi-in,兩個音都清楚。",voc:[["미인","miin","美人"],["예뻐","yeppeo","漂亮"],["사랑","sarang","愛"],["너","neo","你"],["마음","maeum","心"],["봐","bwa","看"],["다시","dasi","再"]]},
+ {ko:"Mr. Simple","en":"Mr. Simple",era:"經典 · 2011",story:"輕快又有態度的代表作,『別想太多、簡單就好』。",chorus:"「Mr. Simple naive」hook + 「쏘쏘쏘」好跟。",tip:"simple 尾音 l 輕輕收。",voc:[["간단해","gandanhae","簡單"],["신나","sinna","嗨"],["걱정마","geokjeongma","別擔心"],["웃어","useo","笑"],["자유","jayu","自由"],["좋아","joa","好"],["가자","gaja","走吧"]]},
+ {ko:"Sexy, Free & Single","en":"Sexy Free Single",era:"經典 · 2012",story:"自信滿滿的舞曲,英文 hook 好喊。",chorus:"「sexy free and single」英文句先抓。",tip:"single 尾音 l 收住。",voc:[["자유","jayu","自由"],["혼자","honja","單身/獨自"],["멋져","meotjyeo","帥"],["최고","choego","最棒"],["신나","sinna","嗨"],["봐","bwa","看"],["좋아","joa","讚"]]},
+ {ko:"아야야","en":"Mamacita",era:"經典 · 2014",story:"復古熱鬧的派對曲(韓文副標『아야야』),現場超嗨。",chorus:"「아야야」擬聲喊句最好跟。",tip:"아야야 a-ya-ya,張嘴大聲。",voc:[["신나","sinna","嗨"],["춤","chum","跳舞"],["소리","sori","聲音"],["최고","choego","最棒"],["가자","gaja","走吧"],["봐","bwa","看"],["빛나","binna","發光"]]},
+ {ko:"Devil","en":"Devil",era:"10 週年 · 2015",story:"出道 10 週年的回歸曲,旋律抓耳。",chorus:"「devil」hook 好喊。",tip:"devil 的 v 咬下唇。",voc:[["마음","maeum","心"],["사랑","sarang","愛"],["너","neo","你"],["밤","bam","夜"],["위험","wiheom","危險"],["춤","chum","跳舞"],["다시","dasi","再"]]},
+ {ko:"Black Suit","en":"Black Suit",era:"2017",story:"成員陸續回歸後的帥氣舞曲。",chorus:"「black suit」hook 好記。",tip:"suit 尾音 t 收。",voc:[["멋져","meotjyeo","帥"],["봐","bwa","看"],["최고","choego","最棒"],["춤","chum","跳舞"],["신나","sinna","嗨"],["빛나","binna","發光"],["가자","gaja","走吧"]]},
+ {ko:"Lo Siento","en":"Lo Siento",era:"2018",story:"融合拉丁風的歌(歌名是西班牙文『對不起』),節奏性感。",chorus:"「lo siento」西語 hook,韓文段拼音跟。",tip:"siento 西語照念即可,韓文段才要拼音。",voc:[["미안해","mianhae","對不起"],["사랑","sarang","愛"],["이별","ibyeol","離別"],["너","neo","你"],["마음","maeum","心"],["밤","bam","夜"],["다시","dasi","再"]]},
+ {ko:"SUPER Clap","en":"Super Clap",era:"2019",story:"明亮復古的舞曲,『一起拍手』超有觀眾互動感。",chorus:"「clap clap」拍手 hook,跟著拍最好記。",tip:"clap 尾音 p 抿住。",voc:[["박수","baksu","拍手"],["신나","sinna","嗨"],["소리","sori","聲音"],["함께","hamkke","一起"],["웃어","useo","笑"],["가자","gaja","走吧"],["최고","choego","最棒"]]},
+ {ko:"House Party","en":"House Party",era:"2021",story:"疫情期間的回歸曲,鼓勵大家在家也能開心,輕快好聽。",chorus:"「house party」hook 輕鬆好跟。",tip:"house 圓唇,尾音 s 輕收。",voc:[["파티","pati","派對"],["신나","sinna","嗨"],["놀자","nolja","一起玩"],["춤","chum","跳舞"],["함께","hamkke","一起"],["오늘","oneul","今天"],["자유","jayu","自由"]]},
+ {ko:"Express Mode","en":"Express Mode",era:"20 週年 · 2025",story:"出道 20 週年 12 輯《Super Junior25》主打,能量全開、老粉新粉都嗨。",chorus:"「express mode」hook 快節奏好喊。",tip:"express 重音在後,尾音 s 收。",voc:[["빨리","ppalli","快"],["신나","sinna","嗨"],["달려","dallyeo","奔馳"],["최고","choego","最棒"],["가자","gaja","走吧"],["함께","hamkke","一起"],["다시","dasi","再"]]},
+]},
+};
+
+/* ===== 狀態 ===== */
+let ART=localStorage.getItem("kArt2")||"superjunior";
+if(!ARTISTS[ART])ART="superjunior";
+const doneKey=a=>"kDone2_"+a;
+function getDone(a){try{return JSON.parse(localStorage.getItem(doneKey(a))||"[]");}catch(e){return [];}}
+function toggleDone(i){const d=getDone(ART);const k=d.indexOf(i);if(k<0)d.push(i);else d.splice(k,1);localStorage.setItem(doneKey(ART),JSON.stringify(d));render();}
+
+/* ===== 渲染 ===== */
+function setRate(v){RATE=parseFloat(v);localStorage.setItem("koRate2",RATE);document.getElementById("rv").textContent=RATE.toFixed(2)+"×";}
+function pick(a){ART=a;localStorage.setItem("kArt2",a);render();window.scrollTo(0,0);}
+function toggleSong(i){const el=document.getElementById("song"+i);el.classList.toggle("open");}
+
+function songCard(s,i){
+ const done=getDone(ART).includes(i);
+ const who=ARTISTS[ART].name;
+ const q=enc(who+" "+s.en);
+ return `<div class="song${done?" learned":""}" id="song${i}">
+  <div class="shead" onclick="toggleSong(${i})">
+    <div><div class="ko">${s.ko}</div><div class="en">${s.en} · ${s.era}</div></div>
+    <div class="done">✅</div>
+  </div>
+  <div class="body">
+    <div class="sec"><div class="lab">🎬 歌曲故事</div><div class="story">${s.story}</div></div>
+    <div class="sec"><div class="lab">🎯 副歌跟唱重點</div><div class="story">${s.chorus}</div></div>
+    <div class="sec"><div class="lab">🗣️ 咬字 tip</div><div class="tip">${s.tip}</div></div>
+    <div class="sec"><div class="lab">🇰🇷 這首的韓文單字(點 🔊 聽韓語)</div>
+      ${s.voc.map(v=>`<div class="voc"><button class="spk" onclick="speak('${v[0]}')">🔊</button><div><span class="k1">${v[0]}</span> <span class="k2">${v[1]} · ${v[2]}</span></div></div>`).join("")}
+    </div>
+    <div class="sec"><div class="lab">🎤 整首在這裡練(版權關係不放歌詞進 App)</div>
+      <div class="links">
+        <a class="lk tr" target="_blank" href="https://www.google.com/search?q=${enc(s.en+" "+who+" romanized lyrics 가사 발음")}">🇰🇷 拼音歌詞</a>
+        <a class="lk" target="_blank" href="https://www.youtube.com/results?search_query=${q}+lyrics">🎬 MV</a>
+        <a class="lk" target="_blank" href="https://www.youtube.com/results?search_query=${q}+karaoke">🎤 跟唱影片</a>
+      </div>
+      <div style="color:var(--dim);font-size:13px">看拼音跟著念 → 開跟唱影片用 0.75 倍速一句一句練。</div></div>
+    <div class="sec">
+      <button class="btn" onclick="startQuiz(${i})">📝 隨堂小測驗</button>
+      <button class="btn ghost" onclick="toggleDone(${i})">${done?"↩️ 取消學會":"✅ 標記學會"}</button>
+      <div id="quiz${i}"></div>
+    </div>
+  </div></div>`;
+}
+
+function render(){
+ const a=ARTISTS[ART];
+ document.body.className=a.cls;
+ document.getElementById("tabs").innerHTML=Object.keys(ARTISTS).map(k=>`<button class="tab${k===ART?" on":""}" onclick="pick('${k}')">${ARTISTS[k].emoji} ${ARTISTS[k].name}</button>`).join("");
+ const done=getDone(ART);const total=a.songs.length;const pct=Math.round(done.length/total*100);
+ let h=`<div style="font-size:14px;color:var(--dim)">已學會 <b style="color:var(--acc);font-size:16px">${done.length}</b> / ${total} 首</div>
+  <div class="bar"><i style="width:${pct}%"></i></div>
+  <div class="rate">🐢 跟唱語速 <input type="range" min="0.5" max="1.1" step="0.05" value="${RATE}" oninput="setRate(this.value)"> <span id="rv">${RATE.toFixed(2)}×</span></div>`;
+ h+=koCard();
+ // 依 era 分組
+ let lastEra="";
+ a.songs.forEach((s,i)=>{ if(s.era!==lastEra){h+=`<div class="era">${s.era}</div>`;lastEra=s.era;} h+=songCard(s,i); });
+ h+=`<div class="foot">元祖團韓語跟唱 🔵 · 進度存在這支手機 · 想加 Super Junior 的歌、或加別的元祖團(2NE1、少女時代…)再跟我說</div>`;
+ document.getElementById("wrap").innerHTML=h;
+}
+
+/* ===== 隨堂測驗:中文→한글 四選一,選項依「意思」去重避免重複答案 ===== */
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function poolAll(){const p=[];ARTISTS[ART].songs.forEach(s=>s.voc.forEach(v=>p.push(v)));return p;}
+function startQuiz(i){
+ const s=ARTISTS[ART].songs[i];const box=document.getElementById("quiz"+i);
+ const qs=shuffle(s.voc).slice(0,Math.min(5,s.voc.length));
+ const pool=poolAll();
+ box.dataset.qi=0;box.dataset.score=0;box.dataset.total=qs.length;
+ box._qs=qs;box._pool=pool;
+ showQ(i);
+}
+function showQ(i){
+ const box=document.getElementById("quiz"+i);const qi=+box.dataset.qi;const qs=box._qs;
+ if(qi>=qs.length){
+   const sc=+box.dataset.score,t=+box.dataset.total;
+   const msg=sc===t?"🏆 全對!你超強":sc>=t*0.6?"👍 不錯,再來一次更熟":"💪 多聽幾次發音,再挑戰";
+   box.innerHTML=`<div class="quiz"><div class="qres">得分 ${sc}/${t} — ${msg}</div><button class="btn" onclick="startQuiz(${i})">🔁 再測一次</button></div>`;return;
+ }
+ const correct=qs[qi];
+ // 干擾項:意思(中文)不同的詞,去重
+ const seen={[correct[2]]:1};const distract=[];
+ shuffle(box._pool).forEach(v=>{ if(distract.length<3 && !seen[v[2]]){seen[v[2]]=1;distract.push(v);} });
+ const opts=shuffle([correct,...distract]);
+ box.innerHTML=`<div class="quiz">
+   <div style="color:var(--dim);font-size:13px">第 ${qi+1}/${qs.length} 題 · 哪個韓文是這個意思?</div>
+   <div class="qq"><b>${correct[2]}</b></div>
+   ${opts.map(o=>`<button class="opt" onclick="answer(${i},'${o[0]}','${correct[0]}')">${o[0]} <span style="color:var(--dim);font-size:14px">${o[1]}</span></button>`).join("")}
+   <div class="qres" id="qr${i}"></div></div>`;
+}
+function answer(i,chosen,correct){
+ const box=document.getElementById("quiz"+i);
+ const btns=box.querySelectorAll(".opt");
+ btns.forEach(b=>{b.onclick=null;const ko=b.textContent.trim().split(" ")[0];if(ko===correct)b.classList.add("ok");else if(ko===chosen)b.classList.add("no");});
+ const ok=chosen===correct;
+ if(ok)box.dataset.score=(+box.dataset.score)+1;
+ speak(correct);
+ document.getElementById("qr"+i).innerHTML=(ok?"✅ 答對!":"❌ 正解:"+correct)+` <button class="btn" style="margin-left:8px" onclick="nextQ(${i})">下一題 ▶</button>`;
+}
+function nextQ(i){const box=document.getElementById("quiz"+i);box.dataset.qi=(+box.dataset.qi)+1;showQ(i);}
+
+/* ===== PWA manifest(可加主畫面) ===== */
+try{const m={name:"唱K-POP學韓語②",short_name:"韓語②SJ",start_url:".",display:"standalone",background_color:"#0d0d12",theme_color:"#0d0d12",icons:[{src:"data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192"><rect width="192" height="192" fill="#0d0d12"/><text x="96" y="130" font-size="120" text-anchor="middle">🔵</text></svg>'),sizes:"192x192",type:"image/svg+xml"}]};
+const blob=new Blob([JSON.stringify(m)],{type:"application/json"});const l=document.createElement("link");l.rel="manifest";l.href=URL.createObjectURL(blob);document.head.appendChild(l);}catch(e){}
+
+render();
+
+/* ===== 自我檢查:?test 時跑,驗資料完整 + 去重邏輯 ===== */
+function selftest(){
+ let n=0,ok=0;
+ for(const a in ARTISTS)ARTISTS[a].songs.forEach(s=>{
+   n++;console.assert(s.ko&&s.en&&s.story&&s.chorus&&s.tip,"缺欄位",a,s.en);
+   console.assert(Array.isArray(s.voc)&&s.voc.length>=4,"voc<4",a,s.en);
+   s.voc.forEach(v=>console.assert(v.length===3&&/[가-힣]/.test(v[0]),"voc格式",a,s.en,v));
+   ok++;
+ });
+ console.log(`✅ selftest:${ok}/${n} 首通過,共 ${poolAll().length} 個單字`);
+}
+if(location.search.includes("test"))selftest();
+</script>
+</body></html>
