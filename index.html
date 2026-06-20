@@ -14,7 +14,7 @@
 body.superjunior{ --acc:#2f6bff; --acc2:#9ec5ff; }       /* Sapphire Blue 應援色 */
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,"Noto Sans TC","Segoe UI",system-ui,sans-serif;font-size:15px;line-height:1.6}
-header{position:sticky;top:0;z-index:5;background:linear-gradient(180deg,var(--bg),rgba(13,13,18,.86));backdrop-filter:blur(8px);padding:12px 14px 8px;border-bottom:1px solid var(--line)}
+header{position:sticky;top:0;z-index:5;background:linear-gradient(180deg,var(--bg),rgba(13,13,18,.86));-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:12px 14px 8px;border-bottom:1px solid var(--line)}
 h1{margin:0;font-size:20px;letter-spacing:.5px}
 h1 b{color:var(--acc)}
 .sub{color:var(--dim);font-size:13px;margin-top:2px}
@@ -61,7 +61,7 @@ h1 b{color:var(--acc)}
 </style></head><body>
 <header>
   <h1>🎤 唱 <b>K-POP</b> 學韓語 ②</h1>
-  <div class="sub">元祖團 · Super Junior 寶藍應援棒一起唱 🔵 · 點 🔊 聽韓語發音</div>
+  <div class="sub">元祖團 · Super Show 必唱・ELF 大合唱 🔵 · 點 🔊 聽韓語發音</div>
   <div class="tabs" id="tabs"></div>
 </header>
 <div class="wrap" id="wrap"></div>
@@ -95,7 +95,10 @@ function koCard(){return `<div class="note">
 const ARTISTS={
 superjunior:{name:"SUPER JUNIOR",emoji:"🔵",cls:"superjunior",songs:[
  {ko:"U","en":"U",era:"經典 · 2006",story:"Super Junior 真正打開知名度的早期代表作,旋律明亮好記。",chorus:"副歌「U」拉長音好跟,先抓主句。",tip:"U 圓唇拉長,像「ㄨˊ」。",voc:[["너","neo","你"],["사랑","sarang","愛"],["마음","maeum","心"],["함께","hamkke","一起"],["좋아","joa","喜歡"],["빛나","binna","發光"],["우리","uri","我們"]]},
+ {ko:"결혼해줘","en":"Marry U",era:"經典 · 2007",story:"ELF 心中的婚禮神曲,演唱會大合唱、揮應援棒必跟的溫暖時刻。",chorus:"「marry u」副歌全場大合唱,務必學。",tip:"결혼 gyeol-hon,받침 ㄹ 收住。",voc:[["결혼","gyeolhon","結婚"],["사랑","sarang","愛"],["약속","yaksok","約定"],["함께","hamkke","一起"],["영원","yeongwon","永遠"],["너","neo","你"],["행복","haengbok","幸福"]]},
+ {ko:"로꾸거","en":"Rokkugo",era:"經典 · 2008",story:"歌名是『거꾸로(倒過來)』反著念,輕鬆搞笑、現場超嗨。",chorus:"副歌節奏快,跟著喊就好玩。",tip:"로꾸거 ro-kku-geo,꾸 緊音。",voc:[["거꾸로","geokkuro","倒過來"],["신나","sinna","嗨"],["웃어","useo","笑"],["놀자","nolja","玩"],["춤","chum","跳舞"],["빨리","ppalli","快"],["가자","gaja","走吧"]]},
  {ko:"쏘리쏘리","en":"Sorry Sorry",era:"經典 · 2009",story:"奠定『神級舞曲』地位的傳奇之作,前奏一下全亞洲都會接。",chorus:"「쏘리쏘리쏘리쏘리」四連發最好跟,先把這句喊穩。",tip:"쏘 sso 緊音用力,別念成輕聲的 so。",voc:[["미안해","mianhae","對不起"],["사랑","sarang","愛"],["너","neo","你"],["빠져","ppajyeo","陷入/著迷"],["마음","maeum","心"],["자꾸","jakku","一直"],["좋아","joa","喜歡"]]},
+ {ko:"너 같은 사람 또 없어","en":"No Other",era:"經典 · 2010",story:"獻給粉絲的感謝情歌,ELF 大合唱經典『沒有人像你一樣』,演唱會催淚必唱。",chorus:"副歌整段大合唱,慢速最好練。",tip:"같은 ga-teun、없어 eop-seo,받침要收。",voc:[["사람","saram","人"],["없어","eopseo","沒有"],["사랑","sarang","愛"],["너","neo","你"],["마음","maeum","心"],["고마워","gomawo","謝謝"],["최고","choego","最棒"]]},
  {ko:"미인아","en":"Bonamana",era:"經典 · 2010",story:"Sorry Sorry 之後的又一神曲(韓文歌名『미인아=美人啊』),貝斯前奏超洗腦。",chorus:"「미인아」呼喊句好記。",tip:"미인 mi-in,兩個音都清楚。",voc:[["미인","miin","美人"],["예뻐","yeppeo","漂亮"],["사랑","sarang","愛"],["너","neo","你"],["마음","maeum","心"],["봐","bwa","看"],["다시","dasi","再"]]},
  {ko:"Mr. Simple","en":"Mr. Simple",era:"經典 · 2011",story:"輕快又有態度的代表作,『別想太多、簡單就好』。",chorus:"「Mr. Simple naive」hook + 「쏘쏘쏘」好跟。",tip:"simple 尾音 l 輕輕收。",voc:[["간단해","gandanhae","簡單"],["신나","sinna","嗨"],["걱정마","geokjeongma","別擔心"],["웃어","useo","笑"],["자유","jayu","自由"],["좋아","joa","好"],["가자","gaja","走吧"]]},
  {ko:"Sexy, Free & Single","en":"Sexy Free Single",era:"經典 · 2012",story:"自信滿滿的舞曲,英文 hook 好喊。",chorus:"「sexy free and single」英文句先抓。",tip:"single 尾音 l 收住。",voc:[["자유","jayu","自由"],["혼자","honja","單身/獨自"],["멋져","meotjyeo","帥"],["최고","choego","最棒"],["신나","sinna","嗨"],["봐","bwa","看"],["좋아","joa","讚"]]},
